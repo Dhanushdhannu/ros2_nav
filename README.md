@@ -25,6 +25,9 @@ ros2 run serial_motor_demo driver --ros-args -p serial_port:=/dev/ttyACM0 -p bau
 
 ros2 run serial_motor_demo gui
 ## Run bot in realtime and get feeds in rviz
+
 ros2 launch articubot_one launch_robot.launch.py 
+
 rviz2
+
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
