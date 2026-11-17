@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<robot name="test_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:arg name="use_ros2_control" default="true"/>
+<xacro:include filename="$(find articubot_one)/description/urdf/materials.xacro" />
+<xacro:include filename="$(find articubot_one)/description/urdf/test_urdf.trans" />
+<xacro:include filename="$(find articubot_one)/description/urdf/test_urdf.gazebo" />
+<xacro:if value="$(arg use_ros2_control)">
+  <xacro:include filename="$(find articubot_one)/description/urdf/ros2_control.xacro" />
+</xacro:if>
+<xacro:unless value="$(arg use_ros2_control)">
+  <xacro:include filename="gazebo_control.xacro"/>
+</xacro:unless>
+
+`
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.20029160467779883 0.0 0.047592486558243705" rpy="0 0 0"/>
+    <mass value="70.82879589189736"/>
+    <inertia ixx="0.56387" iyy="0.97913" izz="1.476206" ixy="0.0" iyz="-0.0" ixz="-0.000981"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find articubot_one)/description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find articubot_one)/description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="0.0 -0.012500000000000011 2.7755575615628914e-17" rpy="0 0 0"/>
+    <mass value="1.3910628658399138"/>
+    <inertia ixx="0.000857" iyy="0.001569" izz="0.000857" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1 0.155 -0.0475" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find articubot_one)/description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1 0.155 -0.0475" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find articubot_one)/description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="0.0 0.012500000000000011 2.7755575615628914e-17" rpy="0 0 0"/>
+    <mass value="1.3910628658399138"/>
+    <inertia ixx="0.000857" iyy="0.001569" izz="0.000857" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1 -0.155 -0.0475" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find articubot_one)/description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1 -0.155 -0.0475" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find articubot_one)/description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="caster_1">
+  <inertial>
+    <origin xyz="-0.050000000000000044 0.0 -0.00416161194815741" rpy="0 0 0"/>
+    <mass value="0.0419754757735944"/>
+    <inertia ixx="2e-06" iyy="2e-06" izz="4e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.4 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find articubot_one)/description/meshes/caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.4 -0.0 -0.01" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find articubot_one)/description/meshes/caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin xyz="-5.551115123125783e-17 3.618764437576271e-18 0.009999999999999981" rpy="0 0 0"/>
+    <mass value="0.3082687791334982"/>
+    <inertia ixx="5.8e-05" iyy="5.8e-05" izz="9.6e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.35 -0.0 -0.095" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find articubot_one)/description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.35 -0.0 -0.095" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find articubot_one)/description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin xyz="0.1 -0.155 0.0475" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin xyz="0.1 0.155 0.0475" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="Rigid 4" type="fixed">
+  <origin xyz="0.4 0.0 0.01" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="caster_1"/>
+</joint>
+
+<joint name="lidar_1" type="fixed">
+  <origin xyz="0.35 0.0 0.095" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>
+
+</robot>
